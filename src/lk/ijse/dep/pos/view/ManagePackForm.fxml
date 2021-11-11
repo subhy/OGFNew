@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="893.0" style="-fx-background-color: white;" stylesheets="@style/manageitemform.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep.pos.controller.ManagePackFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="886.0">
+         <fill>
+            <LinearGradient endX="0.04807692307692308" endY="0.7115384615384616">
+               <stops>
+                  <Stop color="#1598d6" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <ImageView id="imgHome" fitHeight="53.0" fitWidth="55.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="95.0" layoutY="24.0" text="Manage Package">
+         <font>
+            <Font name="Lucida Sans Demibold" size="27.0" />
+         </font>
+      </Label>
+      <JFXButton id="btnAddNewCustomer" layoutX="742.0" layoutY="25.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand;" text="+ New Package" />
+      <JFXTextField fx:id="txtCode" labelFloat="true" layoutX="17.0" layoutY="92.0" onAction="#txtCode_onAction" onKeyPressed="#txtCode_onKeyPressed" prefHeight="28.0" prefWidth="188.0" promptText="Code :" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="244.0" layoutY="92.0" onAction="#txtDesc_onAction" onKeyPressed="#txtDesc_onKeyPressed" prefHeight="28.0" prefWidth="326.0" promptText="Name :" />
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="516.0" layoutY="200.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="92.0" style="-fx-cursor: hand;" text="Save" />
+      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="620.0" layoutY="200.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="92.0" style="-fx-cursor: hand;" text="Delete" />
+      <TableView fx:id="tblPack" layoutX="11.0" layoutY="316.0" prefHeight="338.0" prefWidth="872.0">
+        <columns>
+          <TableColumn prefWidth="96.0" text="Code" />
+          <TableColumn prefWidth="167.0" text="Description" />
+            <TableColumn prefWidth="105.0" text="Unit Price" />
+            <TableColumn prefWidth="154.0" text="Item 01" />
+            <TableColumn prefWidth="122.0" text="Item 02" />
+            <TableColumn prefWidth="184.0" text="Item 03" />
+            <TableColumn prefWidth="75.0" text="Item 04" />
+            <TableColumn prefWidth="75.0" text="Item 05" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="627.0" layoutY="92.0" onAction="#txtUnitPrice_onAction" onKeyPressed="#txtUnitPrice_onKeyPressed" prefHeight="28.0" prefWidth="230.0" promptText="Unit Price :" text="0" />
+      <TextField fx:id="txtItemSearch" layoutX="17.0" layoutY="276.0" prefHeight="26.0" prefWidth="281.0" promptText="Enter Code Or Name" />
+      <Button fx:id="btnReport" layoutX="726.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnReport_onAction" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: #00bfff;" text="Report" />
+      <JFXTextField fx:id="txtnewQty" labelFloat="true" layoutX="376.0" layoutY="212.0" onAction="#txtnewQty_onAction" prefHeight="28.0" prefWidth="258.0" promptText="New Qty :" visible="false" />
+      <JFXComboBox fx:id="cmbItem1" layoutX="21.0" layoutY="149.0" onAction="#cmbItem1_onAction" onKeyPressed="#cmbItem1_onKeyPressed" prefHeight="28.0" prefWidth="157.0" promptText="Item 01" />
+      <JFXComboBox fx:id="cmbItem4" layoutX="21.0" layoutY="198.0" onAction="#cmbItem4_onAction" onKeyPressed="#cmbItem4_onKeyPressed" prefHeight="28.0" prefWidth="157.0" promptText="Item 04" />
+      <JFXComboBox fx:id="cmbItem5" layoutX="248.0" layoutY="198.0" onAction="#cmbItem5_onAction" onKeyPressed="#cmbItem5_onKeyPressed" prefHeight="28.0" prefWidth="157.0" promptText="Item 05" />
+      <JFXComboBox fx:id="cmbItem3" layoutX="631.0" layoutY="149.0" onAction="#cmbItem3_onAction" onKeyPressed="#cmbItem3_onKeyPressed" prefHeight="28.0" prefWidth="157.0" promptText="Item 03" />
+      <JFXComboBox fx:id="cmbItem2" layoutX="246.0" layoutY="149.0" onAction="#cmbItem2_onAction" onKeyPressed="#cmbItem2_onKeyPressed" prefHeight="28.0" prefWidth="157.0" promptText="Item 02" />
+      <Separator layoutX="15.0" layoutY="239.0" prefHeight="14.0" prefWidth="872.0" />
+      <JFXTextField fx:id="txtqty1" alignment="CENTER" layoutX="178.0" layoutY="149.0" onKeyPressed="#txtqty1_onKeyPressed" prefHeight="28.0" prefWidth="33.0" text="1" />
+      <JFXTextField fx:id="txtqty2" alignment="CENTER" layoutX="399.0" layoutY="149.0" onKeyPressed="#txtQty2_onKeyPressed" prefHeight="28.0" prefWidth="33.0" text="1" />
+      <JFXTextField fx:id="txtqty3" alignment="CENTER" layoutX="784.0" layoutY="149.0" onKeyPressed="#txtQty3_onKeyPressed" prefHeight="28.0" prefWidth="33.0" text="1" />
+      <JFXTextField fx:id="txtqty4" alignment="CENTER" layoutX="179.0" layoutY="198.0" onKeyPressed="#txtQty4_onKeyPressed" prefHeight="28.0" prefWidth="33.0" text="1" />
+      <JFXTextField fx:id="txtqty5" alignment="CENTER" layoutX="407.0" layoutY="198.0" onKeyPressed="#txtQty5_onKeyPressed" prefHeight="28.0" prefWidth="33.0" text="1" />
+   </children>
+</AnchorPane>

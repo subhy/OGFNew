@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Sales Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="811e86c3-b81d-4c9d-82a8-51cb0e76df2e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TestyFood"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="dateFrom" class="java.lang.String"/>
+	<parameter name="dateTo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `RedApplePOS`.`ODetails`.`orderDate`,
+	SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)
+FROM `RedApplePOS`.`ODetails` GROUP BY orderDate ORDER BY orderDate ASC]]>
+	</queryString>
+	<field name="orderDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="orderDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="orderDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ODetails"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)"/>
+	</field>
+	<variable name="SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="0" width="544" height="27" uuid="3b95c348-b828-4e59-80e2-6b3fa47ee10d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tasty Food]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-15" y="51" width="568" height="18" uuid="2e97e420-ab53-44ea-ae53-380234dcffba"/>
+				<box>
+					<pen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monthly Sales Report]]></text>
+			</staticText>
+			<textField pattern="MMMM">
+				<reportElement x="451" y="28" width="103" height="18" uuid="a21cc179-6fdf-4693-a307-3754f0d61b9e"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="14" width="544" height="27" uuid="33bf66d8-2304-462a-b026-040faa9df7d5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[One Galle Face LG-K4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="27" width="544" height="27" uuid="a96cca09-18a9-44d5-9662-543a7c9f4a27"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0710664424 / 0778225388]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="28">
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="1" y="2" width="100" height="17" uuid="6e3e04b3-5979-49cb-9b8a-0999bd5b413a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="Rs: ###,##0.00">
+				<reportElement x="453" y="0" width="100" height="20" uuid="7e7138a8-8700-4dab-bec3-82136620e25d"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="5" width="551" height="18" uuid="a887f253-aa75-4c36-b2ad-ec8196961c87"/>
+				<text><![CDATA[________________________________________________________________________________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34">
+			<textField pattern="Rs: ###,##0.00">
+				<reportElement x="420" y="3" width="129" height="17" uuid="2c226da6-5b24-4b22-98b3-2e767aa1c86d"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM(`RedApplePOS`.`ODetails`.qty*`RedApplePOS`.`ODetails`.`uPrice`)1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="4" width="141" height="25" uuid="6b84070d-c220-4e4b-9911-2a2505d3bbca"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Sale for month of ]]></text>
+			</staticText>
+			<textField pattern="MMMM">
+				<reportElement x="351" y="4" width="100" height="24" uuid="47aabf82-4e65-43d8-8951-fdec61fb8d5c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{orderDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="13" width="366" height="18" uuid="05a58ce1-2603-4468-90d1-f13eca4a3482"/>
+				<text><![CDATA[==========================================================================================]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

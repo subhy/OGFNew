@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="588.0" minHeight="440.0" minWidth="974.0" prefHeight="588.0" prefWidth="974.0" style="-fx-background-color: white;" stylesheets="@style/manageitemform.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep.pos.controller.PlaceOrderFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="925.0">
+         <fill>
+            <LinearGradient endX="0.04807692307692308" endY="0.7115384615384616">
+               <stops>
+                  <Stop color="#1598d6" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <ImageView id="imgHome" fitHeight="53.0" fitWidth="55.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="95.0" layoutY="24.0" text="Place Order">
+         <font>
+            <Font name="Lucida Sans Demibold" size="27.0" />
+         </font>
+      </Label>
+      <JFXButton id="btnAddNewOrder" fx:id="btnAddNewOrder" layoutX="661.0" layoutY="87.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="+ New Order" />
+      <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="791.0" layoutY="195.0" prefHeight="28.0" prefWidth="161.0" promptText="Customer Name :" visible="false" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="11.0" layoutY="124.0" prefHeight="28.0" prefWidth="171.0" promptText="Item Description :" />
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="11.0" layoutY="217.0" prefHeight="28.0" prefWidth="92.0" promptText="Qty. on Hand" />
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="11.0" layoutY="311.0" onAction="#btnAdd_OnAction" prefHeight="28.0" prefWidth="171.0" style="-fx-cursor: hand;" text="Add" />
+      <TableView fx:id="tblOrderDetails" layoutX="224.0" layoutY="131.0" prefHeight="210.0" prefWidth="559.0">
+        <columns>
+          <TableColumn prefWidth="65.0" text="Code" />
+          <TableColumn prefWidth="152.0" text="Description" />
+            <TableColumn prefWidth="73.0" text="Qty" />
+            <TableColumn prefWidth="76.0" text="Unit Price" />
+            <TableColumn prefWidth="65.0" text="Total" />
+            <TableColumn prefWidth="123.0" text="Delete" />
+            <TableColumn prefWidth="13.0" text="Cat" />
+            <TableColumn prefWidth="75.0" text="Cat2" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="11.0" layoutY="172.0" prefHeight="28.0" prefWidth="171.0" promptText="Unit Price" />
+      <JFXComboBox fx:id="cmbCustomerId" labelFloat="true" layoutX="22.0" layoutY="401.0" prefHeight="28.0" prefWidth="112.0" promptText="Customer ID :" />
+<!--      <JFXTextField fx:id="txtQty" onKeyPressed="#txtQty_OnKeyPressed" labelFloat="true" layoutX="370.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />-->
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="112.0" layoutY="217.0" onAction="#txtQty_OnAction" onMouseClicked="#txtQty_onMouseClicked" onTouchPressed="#txtQty_onTouchPressed" prefHeight="28.0" prefWidth="92.0" promptText="Qty." />
+      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="805.0" layoutY="56.0" prefHeight="24.0" prefWidth="152.0" text="ORDER ID : OD001" textAlignment="RIGHT">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="22.0" layoutY="443.0" prefHeight="45.0" prefWidth="180.0" text=" 0.00" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton id="btnSave" fx:id="btnPlaceOrder" layoutX="814.0" layoutY="285.0" onAction="#btnPlaceOrder_OnAction" prefHeight="45.0" prefWidth="134.0" style="-fx-cursor: hand; -fx-background-color: orange; -fx-text-fill: black;" text="Place Order" />
+      <JFXTextField fx:id="txtItemCode" labelFloat="true" layoutX="10.0" layoutY="76.0" onAction="#txtItemCode_onAction" onKeyPressed="#txtItemCode_onKeyPresesd" onMouseClicked="#txtItemCode_onMouseClicked" onTouchPressed="#txtItemCode_onTouchPressed" prefHeight="28.0" prefWidth="171.0" promptText="Item Code :" />
+      <JFXComboBox fx:id="cmbSearch" editable="true" labelFloat="true" layoutX="611.0" layoutY="172.0" onAction="#cmbSearch_onAction" onKeyPressed="#cmbSearch_KeyPressed" prefHeight="28.0" prefWidth="152.0" promptText="Search Item" visible="false" />
+      <JFXTextField fx:id="txtAmount" labelFloat="true" layoutX="9.0" layoutY="269.0" onAction="#txtAmount_onAction" prefHeight="28.0" prefWidth="171.0" promptText="Amount" />
+      <Label fx:id="lblDisTotal" contentDisplay="RIGHT" layoutX="784.0" layoutY="222.0" prefHeight="45.0" prefWidth="186.0" text="Total : 0.00">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbPMethod" labelFloat="true" layoutX="796.0" layoutY="160.0" onKeyPressed="#cmbPMethod_onkeyPressed" prefHeight="28.0" prefWidth="152.0" promptText="Payment Method :" />
+      <JFXComboBox fx:id="cmbTransAcc" labelFloat="true" layoutX="478.0" layoutY="452.0" onKeyPressed="#cmbTransAcc_onAction" prefHeight="28.0" prefWidth="161.0" promptText="Account :" visible="false" />
+      <JFXTextField fx:id="txtDisc" labelFloat="true" layoutX="226.0" layoutY="452.0" onAction="#txtDisc_OnAction" onKeyPressed="#txtDisc_keyPressed" prefHeight="30.0" prefWidth="112.0" promptText="Discount :" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXDatePicker fx:id="dpDate" layoutX="820.0" layoutY="16.0" onKeyPressed="#dpDate_onKeyPressed" prefHeight="29.0" prefWidth="134.0" />
+      <JFXTextField fx:id="txtSearchId" layoutX="804.0" layoutY="136.0" onKeyPressed="#txtSearchId_onKeyPressed" promptText="Search Order Id :" visible="false" />
+      <JFXTextField fx:id="txtICategory" layoutX="800.0" layoutY="113.0" prefHeight="28.0" prefWidth="7.0" />
+      <JFXTextField fx:id="txtONo" layoutX="901.0" layoutY="83.0" prefHeight="28.0" prefWidth="24.0" />
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo7" layoutX="287.0" layoutY="362.0" onAction="#btnNo7_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="7">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo4" layoutX="288.0" layoutY="437.0" onAction="#btnNo4_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="4">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo1" layoutX="289.0" layoutY="510.0" onAction="#btnNo1_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="1">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo8" layoutX="377.0" layoutY="362.0" onAction="#btnNo8_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="8">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo5" layoutX="378.0" layoutY="437.0" onAction="#btnNo5_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="5">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo2" layoutX="379.0" layoutY="510.0" onAction="#btnNo2_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="2">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo9" layoutX="469.0" layoutY="359.0" onAction="#btnNo9_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="9">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo6" layoutX="469.0" layoutY="437.0" onAction="#btnNo6_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="6">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo3" layoutX="470.0" layoutY="510.0" onAction="#btnNo3_OnAction" prefHeight="63.0" prefWidth="69.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="3">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnEnter" layoutX="554.0" layoutY="509.0" onAction="#btnEnter_OnAction" prefHeight="63.0" prefWidth="134.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="Enter">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnClear" layoutX="554.0" layoutY="438.0" onAction="#btnClear_OnAction" prefHeight="63.0" prefWidth="134.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="Clear">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="btnAddNewOrder" fx:id="btnNo0" layoutX="554.0" layoutY="359.0" onAction="#btnNo0_OnAction" prefHeight="63.0" prefWidth="134.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="txtICPoint" layoutX="830.0" layoutY="528.0" prefHeight="28.0" prefWidth="99.0" />
+   </children>
+</AnchorPane>
